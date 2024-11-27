@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id = "menu_student_root"
+              name="Student system"
+    />
+    <menuitem id = "menu_front_Desk"
+              name="Front Desk"
+              parent = "menu_student_root"
+    />
+
+    <menuitem id="menu_department"
+              name="Department"
+              parent="menu_student_root"
+              action="action_school_department"
+    />
+
+    <menuitem id = "menu_students"
+              name="Students"
+              parent = "menu_front_Desk"
+              action="action_school_student"
+    />
+    <menuitem id = "menu_teachers"
+              name="Teachers"
+              parent = "menu_front_Desk"
+              action="action_school_teacher"
+    />
+
+</odoo>

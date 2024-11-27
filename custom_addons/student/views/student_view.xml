@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_student_tree" model="ir.ui.view">
+        <field name="name">school.student.tree</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <tree string="Students">
+                <field name="name"/>
+                <field name="date_of_birth"/>
+                <field name="gender"/>
+                <field name="department_id"/>
+                <field name="admission_status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="ir_actions_server_action_mark_as_done" model="ir.actions.server">
+        <field name="name">Mark As Done</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_school_student" />
+        <field name="binding_model_id" ref="model_school_student" />
+        <field name="state">code</field>
+        <field name="code">
+            for record in records:
+                if record.admission_status=='pending':
+                    record.action_done()
+        </field>
+    </record>
+
+<!--Views for Subjects inside students-->
+
+    <record id="view_student_form" model="ir.ui.view">
+        <field name="name">school.student.form</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <form string="Students">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="date_of_birth"/>
+                        </group>
+                        <group>
+                            <field name="gender"/>
+                            <field name="total_marks" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="department_id"/>
+                            <field name="admission_status"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Subjects">
+                            <field name="subject_ids">
+                                <tree string="Subjects">
+                                    <field name="name"/>
+                                    <field name="marks_obtained"/>
+                                    <field name="pass_field"/>
+                                </tree>
+                                <form string="Subject">
+                                    <sheet>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="marks_obtained"/>
+                                            <field name="pass_field" readonly="1"/>
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_school_student" model="ir.actions.act_window">
+        <field name="name">Student</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Create a New Student
+            </p>
+        </field>
+    </record>
+
+</odoo>

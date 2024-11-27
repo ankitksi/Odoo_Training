@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Subject Form View -->
+    <record id="view_subject_form" model="ir.ui.view">
+        <field name="name">subject.form</field>
+        <field name="model">odoo.school.subject</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Subject Tree View -->
+    <record id="view_subject_tree" model="ir.ui.view">
+        <field name="name">subject.tree</field>
+        <field name="model">odoo.school.subject</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Subject Action -->
+    <record id="action_subject" model="ir.actions.act_window">
+        <field name="name">Subjects</field>
+        <field name="res_model">odoo.school.subject</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

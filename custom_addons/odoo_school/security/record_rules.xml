@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="rule_student_own" model="ir.rule">
+        <field name="name">Student: Own Records</field>
+        <field name="model_id" ref="model_odoo_school_student"/>
+        <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+</odoo>

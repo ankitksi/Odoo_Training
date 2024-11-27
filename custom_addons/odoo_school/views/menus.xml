@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_school_root" name="School"/>
+
+    <!-- Submenus -->
+    <menuitem id="menu_student" name="Students" parent="menu_school_root" action="action_student"/>
+    <menuitem id="menu_class" name="Classes" parent="menu_school_root" action="action_class"/>
+    <menuitem id="menu_subject" name="Subjects" parent="menu_school_root" action="action_subject"/>
+    <menuitem id="menu_fees" name="Fees" parent="menu_school_root" action="action_fees"/>
+</odoo>

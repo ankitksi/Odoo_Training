@@ -1,0 +1,18 @@
+<odoo>
+    <record id="action_school_teacher" model="ir.actions.act_window">
+        <field name="name">Teacher</field>
+        <field name="res_model">school.teacher</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            Create a New Teacher
+            </p>
+        </field>
+    </record>
+
+    <menuitem id = "menu_teachers_purchase"
+              name="Book Slot"
+              action="action_school_teacher"
+              parent="purchase.menu_procurement_management"
+    />
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<odoo>
+
+<!--    Classical Inheritance-->
+    <record id="view_school_student_form_inherit" model="ir.ui.view">
+        <field name="name">school.student.form.inherit</field>
+        <field name="model">school.student</field>
+        <field name="inherit_id" ref="student.view_student_form"/> <!-- Reference existing view -->
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_of_birth']" position="after">
+                <field name="grade"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_school_student_form_inherit_delegate" model="ir.ui.view">
+        <field name="name">school.student.form.inherit</field>
+        <field name="model">school.student</field>
+        <field name="inherit_id" ref="student.view_student_form"/> <!-- Reference existing view -->
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='gender']" position="after">
+                <field name="teacher_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_school_student_tree_inherit_delegate" model="ir.ui.view">
+        <field name="name">school.student.tree.inherit</field>
+        <field name="model">school.student</field>
+        <field name="inherit_id" ref="student.view_student_tree"/> <!-- Reference existing view -->
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='gender']" position="after">
+                <field name="teacher_id"/>
+            </xpath>
+        </field>
+    </record>
+
+
+
+
+</odoo>

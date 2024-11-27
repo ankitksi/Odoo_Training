@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_student_user,access_student_user,model_odoo_school_student,base.group_user,1,1,1,1
+access_class_user,access_class_user,model_odoo_school_class,base.group_user,1,1,1,1
+access_subject_user,access_subject_user,model_odoo_school_subject,base.group_user,1,1,1,1
+access_fees_user,access_fees_user,model_odoo_school_fees,base.group_user,1,1,1,1
