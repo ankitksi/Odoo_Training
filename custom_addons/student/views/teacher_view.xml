@@ -28,7 +28,6 @@
             <form string="Teachers">
                 <sheet>
                     <group>
-                        <field name="name"/>
                         <field name="experience"/>
                     </group>
                 </sheet>

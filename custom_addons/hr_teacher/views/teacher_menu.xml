@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="menu_school" name="School"/>
+    <menuitem id="menu_teacher" name="Teachers" parent="menu_school" sequence="1" action="student.action_school_teacher"/>
+</odoo>

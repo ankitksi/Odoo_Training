@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <!-- Root Menu -->
-    <menuitem id="menu_school_root" name="School"/>
+    <menuitem id="menu_school_root" name="Odoo School"/>
 
     <!-- Submenus -->
     <menuitem id="menu_student" name="Students" parent="menu_school_root" action="action_student"/>
