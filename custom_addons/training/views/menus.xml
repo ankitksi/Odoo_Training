@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="menu_exam_root" name="Exams" sequence="7"/>
+
+    <menuitem id="menu_exam" parent="menu_exam_root" action="action_exam" name="Manage Exams"/>
+    <menuitem id="menu_student" parent="menu_exam_root" action="action_student" name="Students"/>
+    <menuitem id="menu_subject" parent="menu_exam_root" action="action_subject" name="Subjects"/>
+    <menuitem id="menu_exam_wizard" parent="menu_exam_root" action="action_exam_wizard" name="Create Exams"/>
+</odoo>
