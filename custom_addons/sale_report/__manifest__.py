@@ -1,7 +1,7 @@
 {
     'name': 'Custom Sales Report',
     'version': '1.0',
-    'author': 'Your Name',
+    'author': 'Ankit',
     'depends': ['sale'],
     'data': [
         'reports/sale_order_report_template.xml',

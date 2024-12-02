@@ -1,5 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-training.access_training_exam,access_training_exam,training.model_training_exam,base.group_user,1,1,1,1
-training.access_training_student,access_training_student,training.model_training_student,base.group_user,1,1,1,1
-training.access_training_subject,access_training_subject,training.model_training_subject,base.group_user,1,1,1,1
-training.access_training_exam_wizard,access_training_exam_wizard,training.model_training_exam_wizard,base.group_user,1,1,1,1
+access_exam_exam,access_exam_exam,model_exam_exam,base.group_user,1,1,1,1
+access_subject_subject,access_subject_subject,model_subject_subject,base.group_user,1,1,1,1
+access_exam_wizard,access_exam_wizard,model_exam_wizard,base.group_user,1,1,1,1

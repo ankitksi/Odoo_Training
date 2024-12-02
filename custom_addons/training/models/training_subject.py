@@ -1,9 +1,7 @@
 from odoo import models, fields
 
-class TrainingSubject(models.Model):
-    _name = 'training.subject'
-    _description = 'Training Subject'
+class Subject(models.Model):
+    _name = 'subject.subject'
+    _description = 'Subject'
 
     name = fields.Char(string='Subject Name', required=True)
-    code = fields.Char(string='Subject Code', required=True)
-    exam_ids = fields.One2many('training.exam', 'subject_id', string='Exams')
