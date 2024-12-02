@@ -30,9 +30,62 @@
         </field>
     </record>
 
+
+
+    <record id="view_exam_graph" model="ir.ui.view">
+        <field name="name">exam.exam.graph.view</field>
+        <field name="model">exam.exam</field>
+        <field name="arch" type="xml">
+            <graph string="Exam Results">
+                <!-- Example of a bar chart -->
+                <field name="marks_obtained" type="measure"/>
+                <field name="student_id" type="row"/>
+                <field name="subject_id" type="col"/>
+
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_exam_kanban" model="ir.ui.view">
+        <field name="name">exam.exam.kanban.view</field>
+        <field name="model">exam.exam</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="student_id"/>
+                <field name="subject_id"/>
+                <field name="marks_obtained"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_card_manage_section">
+                            <div class="o_kanban_manage_reports">
+                                <ul>
+                                    <li><strong><field name="student_id"/></strong></li>
+                                    <li><field name="subject_id"/></li>
+                                    <li><field name="marks_obtained"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_exam_pivot" model="ir.ui.view">
+        <field name="name">view.exam.pivot</field>
+        <field name="model">exam.exam</field>
+        <field name="arch" type="xml">
+            <pivot string="Exams">
+                <field name="subject_id" type="row"/>
+                <field name="student_id"/>
+            </pivot>
+        </field>
+    </record>
+
+
     <record id="action_exam" model="ir.actions.act_window">
         <field name="name">Exams</field>
         <field name="res_model">exam.exam</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,graph,kanban,pivot</field>
     </record>
 </odoo>
