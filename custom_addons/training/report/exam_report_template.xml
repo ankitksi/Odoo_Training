@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="student_marks_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page" style="padding: 20px; font-family: 'Arial', sans-serif;">
+                        <h1 style="text-align: center; color: #4CAF50;">Student Marks Report</h1>
+                        <div style="margin-top: 30px; border: 1px solid #ddd; padding: 20px; border-radius: 10px;">
+                            <p style="font-size: 18px; margin-bottom: 10px;">
+                                <strong>Name:</strong>
+                                <span t-field="doc.student_id" style="margin-left: 10px; font-weight: normal; font-size: 16px;" />
+                            </p>
+                            <p style="font-size: 18px; margin-bottom: 10px;">
+                                <strong>Subject:</strong>
+                                <span t-field="doc.subject_id" style="margin-left: 10px; font-weight: normal; font-size: 16px;" />
+                            </p>
+                            <p style="font-size: 18px; margin-bottom: 10px;">
+                                <strong>Marks Obtained:</strong>
+                                <span t-field="doc.marks_obtained" style="margin-left: 10px; font-weight: normal; font-size: 16px;" />
+                            </p>
+                            <p style="font-size: 18px; margin-bottom: 10px;">
+                                <strong>Exam Date:</strong>
+                                <span t-field="doc.exam_date" style="margin-left: 10px; font-weight: normal; font-size: 16px;" />
+                            </p>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <record id="student_marks_report_temp" model="ir.actions.report">
+        <field name="name">Exam Details</field>
+        <field name="model">exam.exam</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">training.student_marks_report_template</field>
+        <field name="print_report_name">'Exam-Details'</field>
+    </record>
+
+</odoo>

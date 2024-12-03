@@ -7,6 +7,7 @@
     "data":[
         'security/ir.model.access.csv',
         'wizard/wizard_views.xml',
+        'report/exam_report_template.xml',
         'views/exam_views.xml',
         'views/menus.xml',
     ],
