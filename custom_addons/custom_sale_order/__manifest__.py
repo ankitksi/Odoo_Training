@@ -12,6 +12,7 @@
         'security/ir.model.access.csv',
         'views/sale_order_views.xml',
         'wizard/order_line_wizard_views.xml',
+        'data/ir_sequence_data.xml',
     ],
 
     'installable': True,
