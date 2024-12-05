@@ -9,6 +9,7 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                        <field name="tuition_fee"/>
                     </group>
                     <group>
                         <field name="student_ids">
@@ -22,6 +23,7 @@
             </form>
         </field>
     </record>
+
 
     <!-- Class Tree View -->
     <record id="view_class_tree" model="ir.ui.view">
