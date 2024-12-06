@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <menuitem id = "menu_student_root"
-              name="Student system"
+              name="Student Management"
     />
     <menuitem id = "menu_front_Desk"
               name="Front Desk"

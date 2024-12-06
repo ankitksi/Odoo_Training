@@ -1,0 +1,31 @@
+<odoo>
+    <!-- Tree View (List View) for Device Attribute Assignment -->
+    <record id="view_device_attribute_assignment_tree" model="ir.ui.view">
+        <field name="name">device.attribute.assignment.tree</field>
+        <field name="model">device.attribute.assignment</field>
+        <field name="arch" type="xml">
+            <tree string="Device Attribute Assignments">
+                <field name="device_id"/>
+                <field name="device_attribute_id"/>
+                <field name="device_attribute_value_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for Device Attribute Assignment -->
+    <record id="view_device_attribute_assignment_form" model="ir.ui.view">
+        <field name="name">device.attribute.assignment.form</field>
+        <field name="model">device.attribute.assignment</field>
+        <field name="arch" type="xml">
+            <form string="Device Attribute Assignment">
+                <sheet>
+                    <group>
+                        <field name="device_id"/>
+                        <field name="device_attribute_id"/>
+                        <field name="device_attribute_value_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

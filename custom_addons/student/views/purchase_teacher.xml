@@ -10,8 +10,4 @@
         </field>
     </record>
 
-    <menuitem id = "menu_teachers_purchase"
-              name="Book Slot"
-              action="action_school_teacher"
-    />
 </odoo>
