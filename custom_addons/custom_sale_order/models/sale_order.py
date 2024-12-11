@@ -4,6 +4,9 @@ from odoo.exceptions import ValidationError
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
     total_sale_order_line_qty = fields.Float(string="Total Sale Line Qty",compute='_compute_total_sale_order_line_qty',store=True)
+    custom_order_line_ids = fields.One2many(
+        'custom.order.line', 'sale_order_id', string="Custom Order Lines"
+    )
 
     @api.depends('order_line.product_uom_qty')
     def _compute_total_sale_order_line_qty(self):
@@ -27,14 +30,11 @@ class SaleOrder(models.Model):
     @api.model
     def merge_sale_orders_action(self):
         selected_orders = self.browse(self.env.context.get('active_ids', []))
-
-        # Check if orders belong to different customers
         customers = selected_orders.mapped('partner_id')
         if len(customers) > 1:
             raise ValidationError(
                 "You have selected orders from different customers. Please select orders from the same customer.")
 
-        # Create a new sale order for the customer
         partner = selected_orders[0].partner_id
         new_order = self.create({
             'partner_id': partner.id,
@@ -46,8 +46,6 @@ class SaleOrder(models.Model):
             }) for order in selected_orders for line in order.order_line]
         })
 
-
-        # Return an action to open the newly created sale order in the form view
         return {
             'type': 'ir.actions.act_window',
             'res_model': 'sale.order',
