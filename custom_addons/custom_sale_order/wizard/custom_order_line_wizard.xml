@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_custom_order_line_wizard" model="ir.ui.view">
+        <field name="name">custom.order.line.wizard.form</field>
+        <field name="model">custom.order.line.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Custom Order Lines">
+                <sheet>
+                    <group>
+                        <field name="sale_order_id"/>
+                        <field name="custom_order_line_ids">
+                            <tree editable="bottom">
+                                <field name="product_id"/>
+                                <field name="product_uom_qty"/>
+                                <field name="price_unit"/>
+                                <field name="subtotal" readonly="1"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Save" type="object" name="action_save" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

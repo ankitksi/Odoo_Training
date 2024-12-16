@@ -8,6 +8,8 @@
             <xpath expr="//header" position="inside">
                 <button name="action_open_sale_order_line_wizard" string="Edit Order Lines"
                         type="object" class="oe_highlight"/>
+                <button name="action_open_custom_order_line_wizard" string="Custom Order Lines"
+                        type="object" class="oe_highlight"/>
             </xpath>
             <xpath expr="//field[@name='payment_term_id']" position="after">
                 <field name="total_sale_order_line_qty" readonly="1"/>

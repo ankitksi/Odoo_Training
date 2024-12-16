@@ -1,18 +1,44 @@
+# -*- coding: utf-8 -*-
+
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
+
+    sale_order_id = fields.Many2one('sale.order', string="Sale Order")
     total_sale_order_line_qty = fields.Float(string="Total Sale Line Qty",compute='_compute_total_sale_order_line_qty',store=True)
-    custom_order_line_ids = fields.One2many(
-        'custom.order.line', 'sale_order_id', string="Custom Order Lines"
-    )
+    custom_order_line_ids = fields.One2many('custom.order.line', 'sale_order_id', string="Custom Order Lines")
 
     @api.depends('order_line.product_uom_qty')
     def _compute_total_sale_order_line_qty(self):
         for order in self:
             order.total_sale_order_line_qty = sum(order.order_line.mapped('product_uom_qty'))
 
+    def action_open_custom_order_line_wizard(self):
+        # Create temporary records in the intermediary model for the wizard
+        wizard = self.env['custom.order.line.wizard'].create({
+            'sale_order_id': self.id,
+        })
+
+        # Populate wizard lines based on existing custom order lines
+        for line in self.custom_order_line_ids:
+            self.env['custom.sale.order.wizard.line'].create({
+                'wizard_id': wizard.id,
+                'sale_order_id': self.id,
+                'product_id': line.product_id.id,
+                'product_uom_qty': line.product_uom_qty,
+                'price_unit': line.price_unit,
+            })
+
+        # Open the wizard with the created record
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'custom.order.line.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'res_id': wizard.id,  # Reference the newly created wizard record
+        }
 
     def action_open_sale_order_line_wizard(self):
 

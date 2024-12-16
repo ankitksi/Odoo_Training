@@ -1,10 +1,12 @@
+# -*- coding: utf-8 -*-
+
 from odoo import models, fields, api
 
 class CustomOrderLine(models.Model):
     _name = 'custom.order.line'
     _description = 'Custom Order Line'
 
-    sale_order_id = fields.Many2one('sale.order', string="Sale Order", required=True, ondelete='cascade')
+    sale_order_id = fields.Many2one('sale.order', string="Sale Order", required=True)
     product_id = fields.Many2one('product.product', string="Product", required=True)
     product_uom_qty = fields.Float(string="Quantity", required=True, default=1.0)
     price_unit = fields.Float(string="Unit Price")
