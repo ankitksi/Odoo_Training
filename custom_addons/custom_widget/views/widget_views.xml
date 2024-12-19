@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_form_my_model" model="ir.ui.view">
+        <field name="name">custom.model.form</field>
+        <field name="model">widget.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="expression" widget="custom_widget.widget_expression"/>
+                    <field name="result" readonly="1"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_my_model" model="ir.actions.act_window">
+        <field name="name">My Model</field>
+        <field name="res_model">widget.model</field>
+        <field name="view_mode">form</field>
+    </record>
+
+<!--    <menuitem id="root_menu" name="Widget" sequence="1"/>-->
+
+    <menuitem id="root_menu"
+        name="Widget"
+        parent="base.menu_users"
+        sequence="10"
+
+        groups="base.group_user"/>
+
+<!--    <menuitem id="sub_menu" name="Open Widget" parent="root_menu" action="action_my_model"/>-->
+</odoo>

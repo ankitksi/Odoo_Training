@@ -1,0 +1,38 @@
+<odoo>
+    <!-- Define the form view for the model -->
+    <record id="view_form_my_model" model="ir.ui.view">
+        <field name="name">custom.model.form</field>
+        <field name="model">widget.expression.model</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="expression" widget="widget_expression"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tree_my_model" model="ir.ui.view">
+        <field name="name">custom.model.tree</field>
+        <field name="model">widget.expression.model</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="expression" widget="widget_expression"/> <!-- Custom widget for evaluated result -->
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_my_model_tree" model="ir.actions.act_window">
+        <field name="name">My Model</field>
+        <field name="res_model">widget.expression.model</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_tree_my_model"/>
+    </record>
+
+    <!-- Define the root menu -->
+    <menuitem id="root_menu" name="My Widget" sequence="5"/>
+
+    <!-- Define the sub-menu under the root menu -->
+    <menuitem id="sub_menu" name="Open Widget" parent="root_menu" action="action_my_model_tree" sequence="1"/>
+</odoo>

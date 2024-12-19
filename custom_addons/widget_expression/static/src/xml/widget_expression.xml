@@ -1,0 +1,22 @@
+<template id="widget_expression.ExpressionWidget" xml:space="preserve">
+    <t t-name="widget_expression.ExpressionWidget">
+        <!-- Conditionally render based on display mode -->
+        <div>
+            <!-- Editable mode (form view) -->
+            <t t-if="state.displayMode === 'edit'">
+                <input
+                    type="text"
+                    t-model="state.expression"
+                    t-on-change="updateExpression"
+                    class="form-control"
+                />
+            </t>
+            <!-- Readonly mode (tree view) -->
+            <t t-if="state.displayMode === 'readonly'">
+                <span>
+                    <t t-esc="state.result || 'No expression defined'"/>
+                </span>
+            </t>
+        </div>
+    </t>
+</template>
