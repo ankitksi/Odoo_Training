@@ -1,0 +1,19 @@
+<template id="widget_toggle_switch.ToggleSwitchWidget" xml:space="preserve">
+    <t t-name="widget_expression.ToggleSwitchWidget">
+
+        <t t-if="state.displayMode === 'readonly'">
+            <h2><t t-esc="state.toggleState"/> </h2>
+        </t>
+        <t t-if="state.displayMode === 'edit'">
+            <div>
+                <button
+                    t-on-click="toggleState"
+                    class="btn"
+                    t-att-class="state.toggleState === 'off' ? 'btn-danger' : state.toggleState === 'intermediate' ? 'btn-warning' : 'btn-success'"
+                >
+                    <t t-esc="state.toggleState" />
+                </button>
+            </div>
+        </t>
+    </t>
+</template>
