@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <record id="action_open_custom_dialog" model="ir.actions.client">
+            <field name="name">Open Custom Dialog</field>
+            <field name="tag">custom_dialog.action</field>
+        </record>
+
+        <menuitem id="menu_custom_dialog"
+                  name="Custom Dialog"
+                  action="action_open_custom_dialog"
+                  />
+    </data>
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="my_custom_template">
+        <div>
+            <button t-on-click="renderLifecycleComponent">Click to Render Component</button>
+            <div id="component-container"></div>
+        </div>
+    </template>
+
+    <record id="my_custom_view" model="ir.ui.view">
+        <field name="name">my.custom.view</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-name="my.custom.template">
+                <t t-call="my_custom_template"/>
+            </t>
+        </field>
+    </record>
+
+    <record id="action_my_custom_template" model="ir.actions.act_window">
+        <field name="name">My Custom Template</field>
+        <field name="res_model">ir.ui.view</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="my_custom_view"/>
+    </record>
+
+    <menuitem id="menu_my_custom_template"
+          name="My Custom Template"
+          action="action_my_custom_template"/>
+
+</odoo>

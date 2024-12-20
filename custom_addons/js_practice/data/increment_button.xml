@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_increment_button" model="ir.actions.client">
+        <field name="name">Increment Button</field>
+        <field name="tag">increment_button_action</field>
+    </record>
+
+    <menuitem id="menu_increment_button"
+              name="Increment Button"
+              parent="web.menu_custom"
+              action="action_increment_button" />
+</odoo>

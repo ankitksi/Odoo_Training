@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+custom_widget.access_widget_model,access_widget_model,custom_widget.model_widget_model,base.group_user,1,1,1,1

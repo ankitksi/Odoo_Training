@@ -1,0 +1,10 @@
+<odoo>
+    <template id="modal_dialog">
+        <div class="modal">
+            <div class="modal-content">
+                <span class="btn-close"></span>
+                <p>This is modal</p>
+            </div>
+        </div>
+    </template>
+</odoo>

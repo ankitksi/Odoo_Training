@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="my_module.IncrementButtonTemplate">
+        <div class="o_control_panel">
+            <h3>Current Value: <t t-esc="state.count"/></h3>
+            <button type="button" class="btn btn-primary" t-on-click="increment">
+                Increment
+            </button>
+        </div>
+    </t>
+</templates>

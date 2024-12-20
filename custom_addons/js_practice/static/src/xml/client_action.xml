@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--js_practice/static/src/xml/client_action.xml-->
+<odoo>
+    <template id="advanced_dashboard" name="Advanced Dashboard Template">
+        <div>
+            <h2>Advanced Dashboard</h2>
+            <t t-foreach="state.data" t-as="item">
+                <div>
+                    <p>Name: <t t-esc="item.name"/></p>
+                    <p>User ID: <t t-esc="item.user_id[1]"/></p>
+                </div>
+            </t>
+        </div>
+    </template>
+</odoo>

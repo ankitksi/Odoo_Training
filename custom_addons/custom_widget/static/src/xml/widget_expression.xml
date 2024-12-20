@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="custom_widget.WidgetExpression">
+        <div t-if="state.isEditMode">
+            <input type="text" t-att-value="state.expression"/>
+        </div>
+        <div t-if="!state.isEditMode">
+            <span t-esc="state.result"/>
+        </div>
+    </t>
+</templates>
