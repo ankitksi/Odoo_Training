@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--custom_grid_view/views/menu.xml-->
+<odoo>
+    <menuitem id="menu_custom_grid_root" name="Custom Grid"/>
+    <menuitem id="menu_custom_grid" name="Custom Grid View" parent="menu_custom_grid_root"/>
+    <record id="action_custom_grid" model="ir.actions.act_window">
+        <field name="name">Custom Grid</field>
+        <field name="res_model">custom.model</field>
+        <field name="view_mode">grid</field>
+    </record>
+    <menuitem id="menu_custom_grid_action" name="View Grid" parent="menu_custom_grid" action="action_custom_grid"/>
+
+</odoo>

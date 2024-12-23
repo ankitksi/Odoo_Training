@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <!-- Grid View Template -->
+    <t t-name="grid_view.GridView" owl="1">
+        <t t-call-assets="custom_grid_view.assets_frontend" />
+        <!-- The root element of the view component -->
+        <div t-ref="root" t-att-class="props.className">
+            <!-- Layout component for organizing the view -->
+            <Layout className="model.useSampleModel ? 'o_view_sample_data' : ''"
+                    display="props.display">
+                <!-- Slot for additional actions in the control panel -->
+                <t t-set-slot="control-panel-additional-actions">
+                    <CogMenu/>
+                </t>
+                <!-- Slot for layout buttons -->
+                <t t-set-slot="layout-buttons"/>
+                <!-- Slot for layout actions -->
+                <t t-set-slot="layout-actions">
+                    <!-- SearchBar component rendered if showSearchBar is true -->
+                    <SearchBar t-if="searchBarToggler.state.showSearchBar"/>
+                </t>
+                <!-- Slot for additional navigation actions in the control panel -->
+                <t t-set-slot="control-panel-navigation-additional">
+                    <!-- Render the component specified by searchBarToggler.component -->
+                    <t t-component="searchBarToggler.component"
+                       t-props="searchBarToggler.props"/>
+                </t>
+                <!-- Render the main content using the Renderer component -->
+                <t t-component="props.Renderer" t-props="renderProps" list="model.root"/>
+            </Layout>
+        </div>
+    </t>
+
+    <!-- Grid Renderer Template -->
+    <t t-name="grid_view.GridRenderer" owl="1">
+        <t t-call-assets="custom_grid_view.assets_frontend" />
+        <style>
+            /* General Styling */
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f9f9f9;
+            }
+
+            /* Root Container */
+            .o_grid_view {
+                margin: 20px auto;
+                padding: 20px;
+                background: #fff;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+            }
+
+            /* Table Styling */
+            .table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+
+            .table thead th {
+                background-color: #007bff;
+                color: white;
+                padding: 10px;
+                text-align: left;
+            }
+
+            .table tbody tr:nth-child(odd) {
+                background-color: #f2f2f2;
+            }
+
+            .table tbody tr:hover {
+                background-color: #e2e6ea;
+            }
+
+            .table td, .table th {
+                padding: 12px;
+                border: 1px solid #ddd;
+            }
+
+            /* Add Record Form */
+            .add-record-form {
+                padding: 15px;
+                margin-bottom: 20px;
+                background: #f8f9fa;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .add-record-form h3 {
+                margin-bottom: 15px;
+                color: #333;
+            }
+
+            .add-record-form input {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+
+            .add-record-form button {
+                padding: 10px 15px;
+                background-color: #007bff;
+                border: none;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            .add-record-form button:hover {
+                background-color: #0056b3;
+            }
+
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                .o_grid_view {
+                    padding: 10px;
+                }
+
+                .table th, .table td {
+                    padding: 8px;
+                }
+
+                .add-record-form input, .add-record-form button {
+                    padding: 8px;
+                }
+            }
+
+        </style>
+        <div class="o_grid_view">
+                    <div t-att-class="add-record-form">
+            <h3>Add New Record</h3>
+            <form t-on-submit="addRecord" auto="off">
+                <input type="text" id="name" class="form-control" t-att-required="true" placeholder="Name..."/>
+                <input type="textarea" id="description" class="form-control" placeholder="Description..."/>
+                <button type="submit" class="btn btn-primary">Add Record</button>
+            </form>
+        </div>
+            <table class="table table-bordered table-hover">
+                <!-- Table Header -->
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <!-- Table Body -->
+                <tbody>
+                    <!-- Iterate over the data passed via props -->
+                    <t t-foreach="props.records" t-as="record" t-key="record.id">
+                        <tr>
+                            <td t-esc="record.name"/>
+                            <td t-esc="record.description"/>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+    </t>
+
+</templates>

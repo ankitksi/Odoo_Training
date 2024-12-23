@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Grid View Definition -->
+    <record id="view_my_grid" model="ir.ui.view">
+        <field name="name">My Grid View</field>
+        <field name="model">custom.model</field>
+        <field name="arch" type="xml">
+            <grid string="My Grid View">
+                <!-- Define Group By for Rows -->
+                <field name="name" type="row"/>
+                <!-- Define Columns -->
+                <field name="description" type="measure"/>
+            </grid>
+        </field>
+    </record>
+
+    <!-- Action Record for the Grid View -->
+    <record id="custom_grid_view_action" model="ir.actions.act_window">
+        <field name="name">My Grid View</field>
+        <field name="res_model">custom.model</field>
+        <field name="view_mode">grid, form,kanban,tree</field>
+        <field name="view_id" ref="view_my_grid"/>
+    </record>
+
+    <!-- Linking Action to View -->
+    <record id="custom_grid_view_record" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">grid</field>
+        <field name="view_id" ref="view_my_grid"/>
+        <field name="act_window_id" ref="custom_grid_view_action"/>
+    </record>
+</odoo>
