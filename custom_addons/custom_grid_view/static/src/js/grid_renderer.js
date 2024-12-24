@@ -4,12 +4,14 @@ import { View } from "@web/views/view";
 import { Field } from "@web/views/fields/field";
 import { Record } from "@web/model/record";
 import { useService } from "@web/core/utils/hooks";
+import { _t } from "@web/core/l10n/translation";
 import { ViewScaleSelector } from "@web/views/view_components/view_scale_selector";
 export class GridRenderer extends Component {
     async setup() {
         // Initialize necessary states
 //        this.records = this.props.records;
         this.orm = useService("orm");
+        this.notification = useService("notification");
         this.records = useState(this.props.records);
         console.log(this.records);
     }
@@ -19,11 +21,6 @@ export class GridRenderer extends Component {
 
         const name = ev.target.querySelector("#name").value;
         const description = ev.target.querySelector("#description").value;
-
-        if (!name || !description) {
-            alert("Please fill out all fields!");
-            return;
-        }
 
         try {
             // Create a new record using ORM
@@ -40,11 +37,18 @@ export class GridRenderer extends Component {
 
             ev.target.reset();
 
-
+            this.notification.add(_t("Record added successfully"),
+                                    {
+                                    type:"success",
+                                    title:_t("Success")
+                                    })
             console.log("Record added successfully:", newRecordId);
         } catch (error) {
-            console.error("Failed to add record:", error);
-            alert("Error adding record. Check the console for details.");
+            this.notification.add(_t("Failed to add record"),
+                        {
+                        type:"danger",
+                        title:_t("Failed")
+                        })
         }
     }
 
