@@ -51,6 +51,27 @@
         </field>
     </record>
 
+    <record id="view_exam_search" model="ir.ui.view">
+        <field name="name">exam.search</field>
+        <field name="model">exam.exam</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="student_id"/>
+                <field name="subject_id"/>
+                <field name="exam_date"/>
+                <filter string="Maths" name="maths" domain="[('subject_id', '=', 'Maths')]"/>
+<!--                <separator/>-->
+                <filter string="English" name="english" domain="[('subject_id', '=', 'English')]"/>
+                <group expand="1" string="Group By">
+                    <filter string="Subject" name="group_by_subject" context="{'group_by': 'subject_id'}"/>
+                </group>
+                <searchpanel>
+                        <field name="subject_id" string="Subject" enable_counters="1"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
     <record id="view_exam_kanban" model="ir.ui.view">
         <field name="name">exam.exam.kanban.view</field>
         <field name="model">exam.exam</field>
